@@ -1,6 +1,25 @@
-# Deeplink – Set up deep links into the Unity editor
+## fork changes
 
-![Unity Version Compatibility](https://img.shields.io/badge/Unity-2019.4%20%E2%80%94%202021.2-brightgreen) 
+Unity natively supports the URI `com.unity3d.kharma/content/163802` to install UPM packages.  
+The original repo piggy backed on this and added support for custom URI commands based on this. e.g. `com.unity3d.kharma/open-scene/DeepLinkSample`,  
+but it seems Unity now filters out any URI that doesn't contain `content`, so the above URI doesn't get processed anymore in Unity.
+
+changes
+- now support selecting asset with `com.unity3d.kharma:content//select/{asset_path}`, e.g. `com.unity3d.kharma:content//select/Assets`  
+- now support run menu commands with `com.unity3d.kharma:content/{menu_path}`, e.g. `com.unity3d.kharma:content/Help/About%20Unity`  
+- I removed support for the c# deeplink attribute, e.g.`[DeepLink(RegexFilter = @"com.unity3d.kharma:upmpackage/(.*)")]`  
+
+above URI's don't work in the browser, need to forward them  
+a free forwarder: `https://fwd.needle.tools/deeplink?`  
+e.g. `https://fwd.needle.tools/deeplink?com.unity3d.kharma:content/Help/About%20Unity`
+
+
+
+---
+
+
+
+# Deeplink – Set up deep links into the Unity editor
 
 ## What's this?
 
@@ -55,9 +74,6 @@ For reference, these are regular Unity deeplinks:
 ## Deeplinks from GitHub markdown / Slack / Discord / etc
 
 Many non-browsers (messaging tools, markdown viewers, ...) don't support deeplinks directly.  
-You can use our deeplink forwarder for these cases: 
-
-- [Install MemoryProfiler Package (Slack-compatible link)](https://fwd.needle.tools/deeplink?com.unity3d.kharma:install-package/com.unity.memoryprofiler)  
 
 The forwarder is located at `https://fwd.needle.tools/deeplink?` and supports links starting with `com.unity3d.kharma:` or `unityhub://`.
 
