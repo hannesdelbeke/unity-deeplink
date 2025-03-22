@@ -8,6 +8,7 @@ changes
 - now support selecting asset with `com.unity3d.kharma:content//select/{asset_path}`, e.g. `com.unity3d.kharma:content//select/Assets`  
 - now support run menu commands with `com.unity3d.kharma:content/{menu_path}`, e.g. `com.unity3d.kharma:content/Help/About%20Unity`  
 - I removed support for the c# deeplink attribute, e.g.`[DeepLink(RegexFilter = @"com.unity3d.kharma:upmpackage/(.*)")]`  
+- right click on an asset to copy it's URI
 
 above URI's don't work in the browser, need to forward them  
 a free forwarder: `https://fwd.needle.tools/deeplink?`  

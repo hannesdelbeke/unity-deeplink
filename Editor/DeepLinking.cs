@@ -14,6 +14,27 @@ namespace Needle.Deeplink
 {
     internal class DeepLinking
     {
+
+        // This is for testing and adding custom items in the menu
+        [MenuItem("Assets/copy select asset URI", false, 5)]
+        private static void MyCustomCommand()
+        {
+            // get the selected asset path
+            var assetPath = AssetDatabase.GetAssetPath(Selection.activeObject);
+            if (string.IsNullOrEmpty(assetPath))
+            {
+                Debug.LogWarning("No asset selected");
+                return;
+            }
+
+            // ensure the asset path is in the correct format
+            // com.unity3d.kharma:content//select/Assets
+            var uri = "com.unity3d.kharma:content//select/" + assetPath;
+            EditorGUIUtility.systemCopyBuffer = uri;
+            Debug.Log("Copied URI to clipboard: " + uri);
+        }
+
+
         [InitializeOnLoadMethod]
         static void InitializePatch()
         {
