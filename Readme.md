@@ -1,3 +1,7 @@
+Control Unity from your browser.  
+Click a URL in your browser, and run a menu command in Unity, or select an asset in the project window.  
+Great for documentation.  
+
 ## fork changes
 
 Unity natively supports the URI `com.unity3d.kharma/content/163802` to install UPM packages.  
