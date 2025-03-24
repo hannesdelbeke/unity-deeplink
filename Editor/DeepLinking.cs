@@ -16,7 +16,7 @@ namespace Needle.Deeplink
     {
 
         // This is for testing and adding custom items in the menu
-        [MenuItem("Assets/copy select asset URI", false, 5)]
+        [MenuItem("Assets/Copy Asset URI", false, 19)]
         private static void MyCustomCommand()
         {
             // get the selected asset path
@@ -33,7 +33,6 @@ namespace Needle.Deeplink
             EditorGUIUtility.systemCopyBuffer = uri;
             Debug.Log("Copied URI to clipboard: " + uri);
         }
-
 
         [InitializeOnLoadMethod]
         static void InitializePatch()
@@ -96,7 +95,7 @@ namespace Needle.Deeplink
                         Debug.LogWarning("[Deep Link] Select asset link: asset not found at path " + assetPath);
                     }
                 }
-                return true;
+                return false;
             }
 
 
@@ -117,8 +116,7 @@ namespace Needle.Deeplink
                 {
                     EditorApplication.ExecuteMenuItem(menuPath);
                 }
-
-                return true;
+                return false;
             }
 
 
